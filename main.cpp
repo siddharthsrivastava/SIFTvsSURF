@@ -1023,226 +1023,28 @@ void runAll(char *method)
 
 int main(int argc, char *argv[])
 {
-    //QCoreApplication a(argc, argv);
+
     cv::initModule_nonfree();
-    //fileAffine.open(QIODevice::ReadWrite);
-//    filePerspective.open(QIODevice::ReadWrite);
-//    fileRotated.open(QIODevice::ReadWrite);
-//    fileScaled.open(QIODevice::ReadWrite);
+    fileAffine.open(QIODevice::ReadWrite);
+    filePerspective.open(QIODevice::ReadWrite);
+    fileRotated.open(QIODevice::ReadWrite);
+    fileScaled.open(QIODevice::ReadWrite);
     fileSimilarity.open((QFile::ReadWrite));
 
     char method[] = "SIFT";
-//    runAll(method);
+    runAll(method);
     char method1[] = "SURF";
-  //  runAll(method1);
+    runAll(method1);
 
     //runSimALL(method);
-    runSimALL(method1);
+  //  runSimALL(method1);
 
-//    fileAffine.close();
-//    filePerspective.close();
-//    fileRotated.close();
-//    fileScaled.close();
+    fileAffine.close();
+    filePerspective.close();
+    fileRotated.close();
+    fileScaled.close();
     fileSimilarity.close();
 
-//    Mat m = imread(pathReference.arg(1).toStdString());
-//    QString targetTransform;
-//    // Reference images
-//    FileStorage fs("CountKeypoints_ori.yml", FileStorage::WRITE);
-//    QDir dir(pathReference1);
-//   // saveKeypoints(dir,fs, method);
-
-//    // count affine keypoints
-//    FileStorage fs1("CountAffineKeypoints.yml", FileStorage::WRITE);
-//    QDir dirAffine(pathAffine1);
-// //   saveKeypoints(dirAffine,fs1, method);
-
-//    // Match with affine
-//    targetTransform = "affine";
-//    FileStorage fsAffineMatching("AffineMatching.yml", FileStorage::WRITE);
-
-//    dir.setFilter(QDir::Files);
-//    QFileInfoList file = dir.entryInfoList();
-
-//    for(int i = 1; i <= NO_IMAGES; i++)
-//    {
-//        //QFileInfo f = file.at(i);
-//      //  cout << pathReference.arg(i).toStdString() <<endl;
-//        //Mat m = imread(f.absoluteFilePath().toStdString());
-//        //Mat m = imread(pathReference.arg(i).toStdString());
-
-//       // initMatching(m,dirAffine,method,targetTransform,fsAffineMatching,i);
-//    }
-////    Mat image = imread(pathReference.arg(1).toStdString());
-////    QString pathReference2("J:\\iit\\3rd sem\\eel806_vision\\project\\dataset\\reference1\\%1.jpg");
-////    Mat image1 = imread(pathReference2.arg(1).toStdString());
-////    Mat target = imread(pathScaled.arg(1).arg(5).toStdString());
-////    cout << "SURF";
-////             cout << "Threshold " << 2 << endl;
-////            fpMatchingAccuracyScaled(image1, target, 5,method,2);
-////             cout << "Threshold " << 5 << endl;
-////            fpMatchingAccuracyScaled(image1, target, 5,method,5);
-////            cout << endl;
-
-//    for(int i = 1; i <= NO_SCALED; i++)
-//    {
-
-//        //Mat target = imread(pathAffine.arg(1).arg(i).toStdString());
-//       // cout << "Threshold " << 2<< endl;
-//        //fpMatchingAccuracyAffine(image, target,method,i,2);
-//        //cout << "Threshold " << 5 << endl;
-//        //fpMatchingAccuracyAffine(image, target, method,i,5);
-//        //Mat target = imread(pathPerspective.arg(1).arg(i).toStdString());
-//        //fpMatchingAccuracyPerspective(image, target,method,i,2);
-//        //fpMatchingAccuracyPerspective(image, target, method,i,5);
-
-////        Mat target = imread(pathRotated.arg(1).arg(i).toStdString());
-////        cout << "Image No: " << i << endl;
-////         cout << "Threshold " << 2 << endl;
-////        fpMatchingAccuracyRotation(image, target, i,method,2);
-////         cout << "Threshold " << 5 << endl;
-////        fpMatchingAccuracyRotation(image, target, i,method,5);
-////        cout << endl;
-
-////        Mat target = imread(pathScaled.arg(1).arg(i).toStdString());
-////        cout << "Image No: " << i << endl;
-////         cout << "Threshold " << 2 << endl;
-////        fpMatchingAccuracyScaled(image, target, i,method,2);
-////         cout << "Threshold " << 5 << endl;
-////        fpMatchingAccuracyScaled(image, target, i,method,5);
-////        cout << endl;
-//    }
-
-    // For all images
-
-
-//    Mat src = imread(pathReference.arg(1).toStdString());
-//    std::vector<Point2f> obj(4);
-//    std::vector<Point2f> scene(4);
-//    int xSrc[3], ySrc[3]; float xDest[3], yDest[3];
-//    xSrc[0] = 0; xSrc[1] = src.cols-1; xSrc[2] = 0;
-//    ySrc[0] = 0; ySrc[1] = 0; ySrc[2] = src.rows-1;
-
-//    xDest[0] = 0.0; xDest[1] = 0.9; xDest[2] = 0.0;
-//    yDest[0] = 0.1; yDest[1] = 0.1; yDest[2] = 0.9;
-
-//    Point2f srcTri[4];
-//    Point2f dstTri[4];
-//    srcTri[0] = Point2f( xSrc[0],ySrc[0] );
-//    srcTri[1] = Point2f( xSrc[1], ySrc[1] );
-//    srcTri[2] = Point2f( xSrc[2], ySrc[2] );
-//    cout << "\nadfdf"<< src.cols*xDest[0] << endl;
-//    dstTri[0] = Point2f( src.cols*xDest[0], src.rows*yDest[0] );
-//    dstTri[1] = Point2f( src.cols*xDest[1], src.rows*yDest[1] );
-//    dstTri[2] = Point2f( src.cols*xDest[2], src.rows*yDest[2] );
-
-//    Mat warp_mat = getAffineTransform( srcTri, dstTri );
-
-//    warp_mat.convertTo(warp_mat,CV_32FC1,1,0);
-//    Point2f x;
-//    x = Point2f(src.cols-1, src.rows-1);
-//    std::vector<cv::Point3f> img1;
-//    img1.push_back(Point3f(src.cols-1, src.rows-1,1));
-//    Mat srcMat = Mat(img1).reshape(1).t();
-//    Mat dstMat = warp_mat*srcMat; //USE MATRIX A
-//    cout << dstMat;
-//    //Mat warp_dst = Mat::zeros(1, 1,src.type() );
-//    //warpAffine(img1, warp_dst, warp_mat, warp_dst.size() );
-//    //warpAffine( img1, warp_dst, warp_mat, warp_dst.size() );
-//    //imshow("aa", warp_dst);
-//    cout << dstMat.at<float>(0,0)<<endl;
-//    cout << dstMat.at<float>(0,1);
-//    //warp_dst = Mat_<float>(warp_dst);
-//    //cout  << " " << warp_dst;
-//    obj[0] = srcTri[0];
-//    obj[1] = srcTri[1];
-//    obj[2] = srcTri[2];
-//    obj[3] = Point2f(src.cols -1, src.rows-1);
-//    scene[0] = dstTri[0];
-//    scene[1] = dstTri[1];
-//    scene[2] = dstTri[2];
-//    scene[3] = Point2f(dstMat.at<float>(0,0), dstMat.at<float>(0,1));
-
-//    std::vector<Point2f> scene_corners(4);
-
-//    // Mat H = findHomography( obj, scene, CV_RANSAC );
-
-//    Mat warp_mst = getPerspectiveTransform( obj, scene );
-//    perspectiveTransform(obj,scene_corners,warp_mst);
-
-//    cout << scene_corners;
-//    Mat image = imread("J:\\iit\\3rd sem\\eel806_vision\\project\\dataset\\singletest\\1.jpg");
-//    Mat target = imread("J:\\iit\\3rd sem\\eel806_vision\\project\\dataset\\singletest\\affine_1_1.jpg");
-//    resize(image,image,Size(400,400));
-//    resize(target,target,Size(400,400));
-//    cv::Ptr<FeatureDetector> featureDetector = cv::FeatureDetector::create(method);
-//    std::vector<KeyPoint> keypoints;
-//    cv::Mat descriptors;
-//    featureDetector->detect(image, keypoints); // NOTE: featureDetector is a pointer hence the '->'.
-
-//    cv::Ptr<DescriptorExtractor> featureExtractor = cv::DescriptorExtractor::create(method);
-//    featureExtractor->compute(image, keypoints, descriptors);
-
-//    cv::Mat descriptors1;
-//    std::vector<KeyPoint> keypoints1;
-//    featureDetector->detect(target, keypoints1); // NOTE: featureDetector is a pointer hence the '->'.
-//    featureExtractor->compute(target, keypoints1, descriptors1);
-
-//    FlannBasedMatcher matcher;
-//    std::vector< DMatch > matches;
-//    matcher.match( descriptors, descriptors1, matches );
-
-//    double max_dist = 0; double min_dist = 100;
-
-//    for( int i = 0; i < descriptors.rows; i++ )
-//    { double dist = matches[i].distance;
-//      if( dist < min_dist ) min_dist = dist;
-//      if( dist > max_dist ) max_dist = dist;
-//    }
-
-//    printf("-- Max dist : %f \n", max_dist );
-//    printf("-- Min dist : %f \n", min_dist );
-
-//    std::vector< DMatch > good_matches;
-
-//    for( int i = 0; i < descriptors.rows; i++ )
-//    { if( matches[i].distance <= 2*min_dist )
-//      { good_matches.push_back( matches[i]); }
-//    }
-
-//    Mat img_matches;
-//    drawMatches( image, keypoints, target, keypoints1,
-//                 good_matches, img_matches, Scalar::all(-1), Scalar::all(-1),
-//                 vector<char>(), DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS );
-//    //imshow( "Good Matches", img_matches );
-
-//    std::vector<Point2f> obj;
-//      std::vector<Point2f> scene;
-//      cout << "Total Matches: " << good_matches.size();
-//    for( int i = 0; i < good_matches.size(); i++ )
-//      {
-
-//        //-- Get the keypoints from the good matches
-//        obj.push_back( keypoints[ good_matches[i].queryIdx ].pt );
-//        scene.push_back( keypoints1[ good_matches[i].trainIdx ].pt );
-//      }
-
-//      Mat H = findHomography( obj, scene, CV_RANSAC );
-//      std::vector<Point2f> obj_corners(4);
-//        obj_corners[0] = cvPoint(0,0); obj_corners[1] = cvPoint( image.cols, 0 );
-//        obj_corners[2] = cvPoint( image.cols, image.rows ); obj_corners[3] = cvPoint( 0, image.rows );
-//        std::vector<Point2f> scene_corners(4);
-
-//        perspectiveTransform( obj_corners, scene_corners, H);
-
-//        //-- Draw lines between the corners (the mapped object in the scene - image_2 )
-//        line( img_matches, scene_corners[0] + Point2f( image.cols, 0), scene_corners[1] + Point2f( image.cols, 0), Scalar(0, 255, 0), 4 );
-//        line( img_matches, scene_corners[1] + Point2f( image.cols, 0), scene_corners[2] + Point2f( image.cols, 0), Scalar( 0, 255, 0), 4 );
-//        line( img_matches, scene_corners[2] + Point2f( image.cols, 0), scene_corners[3] + Point2f( image.cols, 0), Scalar( 0, 255, 0), 4 );
-//        line( img_matches, scene_corners[3] + Point2f( image.cols, 0), scene_corners[0] + Point2f( image.cols, 0), Scalar( 0, 255, 0), 4 );
-
-        //-- Show detected matches
-        //imshow( "Good Matches & Object detection", img_matches );
 
 cvWaitKey(0);
     return 0;
